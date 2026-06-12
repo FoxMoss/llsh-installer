@@ -10,7 +10,7 @@ if [ "$ARCH" != "x86_64" ]; then
   exit
 fi
 
-curl "https://github.com/FoxMoss/llsh-installer/releases/download/v0.0.1/$ARCH-$OS-installer" --output /tmp/llsh-installer -# -L
+COLUMNS=50 curl "https://github.com/FoxMoss/llsh-installer/releases/download/v0.0.1/$ARCH-$OS-installer" --output /tmp/llsh-installer -# -L
 chmod +x /tmp/llsh-installer
 /tmp/llsh-installer
 rm /tmp/llsh-installer
