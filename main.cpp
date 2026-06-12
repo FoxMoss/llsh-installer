@@ -63,7 +63,6 @@
       fprintf(stderr, "\e[0;31merror: %s\e[0;37m\n", archive_error_string(a));
       return false;
     }
-    r = archive_write_header(ext, entry);
 
     auto pathname = std::string(archive_entry_pathname(entry));
     if (pathname.starts_with(prefix)) {
@@ -71,6 +70,8 @@
     }
     archive_entry_set_pathname(entry, pathname.c_str());
     printf("\e[0;37mextracted \e[0;32m%s\e[0;37m\n", pathname.c_str());
+
+    r = archive_write_header(ext, entry);
 
     if (r == ARCHIVE_OK) {
       if (!copy_data(a, ext)) {
